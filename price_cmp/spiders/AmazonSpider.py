@@ -29,12 +29,16 @@ class AmazonSpider(Spider) :
 
 		items = []
 		for sel in Selector(response).xpath("//div[@name]") :	# for div that has nid attribute
-			print sel.extract()
 			a = sel.xpath(".//div[@class='productTitle']/a").pop()
 			item = PriceCmpItem()
 			item['url'] = a.xpath('@href').extract().pop()
 			item['name'] = a.xpath('text()').extract().pop()
-			item['price'] = float(sel.xpath(".//div[@class='newPrice']/span/text()").extract()[0].split()[1])
+
+			price = sel.xpath(".//div[@class='newPrice']/span/text()").extract();
+			if (not price) :
+				continue
+
+			item['price'] = float(price[0].split()[1].replace(",", ""))
 			items.append(item)
 
 		for item in items :
