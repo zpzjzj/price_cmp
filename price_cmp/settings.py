@@ -11,6 +11,6 @@ BOT_NAME = 'price_cmp'
 SPIDER_MODULES = ['price_cmp.spiders']
 NEWSPIDER_MODULE = 'price_cmp.spiders'
 
-ITEM_PIPELINES = ['price_cmp.pipelines.JsonWithEncodingPipeline']
+# ITEM_PIPELINES = ['price_cmp.pipelines.JsonWithEncodingPipeline']
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'price_cmp (+http://www.yourdomain.com)'
